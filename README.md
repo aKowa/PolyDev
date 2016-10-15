@@ -1,6 +1,6 @@
 # PolyDev
 Collection of useful libraries for Unity3D, including:
 
-- lottery and geometric Randomness
+- lottery and geometric randomness
 - mesh generator
 - shader
