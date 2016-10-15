@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-using PolyPaw.LotteryRandom;
+using PolyDev.Random.Lottery;
 
 public class LotteryRandomSprite : MonoBehaviour
 {
