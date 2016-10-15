@@ -1,0 +1,4 @@
+sceneSetups:
+- path: Assets/Random/Geometry/Example/Scenes/Example_MeshGenerator.unity
+  isLoaded: 1
+  isActive: 1

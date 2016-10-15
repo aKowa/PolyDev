@@ -111,6 +111,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Random\Geometry\Scripts\Editor\SpheroidGeneratorEditor.cs" />
     <Compile Include="Assets\Random\Lottery\Example\Scripts\Editor\LotteryRandomAudioClipInspector.cs" />
     <Compile Include="Assets\Random\Lottery\Example\Scripts\Editor\LotteryRandomIntInspector.cs" />
     <Compile Include="Assets\Random\Lottery\Example\Scripts\Editor\LotteryRandomSpriteInspector.cs" />
