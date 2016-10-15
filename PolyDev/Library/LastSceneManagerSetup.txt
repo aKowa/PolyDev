@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Random/Geometry/Example/Scenes/Example_MeshGenerator.unity
+- path: C:/Users/Schnuffel/Developement/Tools/Water2D/Water2D/Assets/Content/Scenes/MeshGeneration_Test.unity
   isLoaded: 1
   isActive: 1

@@ -69,8 +69,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Random\Geometry\Scripts\ASpheroidGenerator.cs" />
-    <Compile Include="Assets\Random\Geometry\Scripts\SpheroidGenerator.cs" />
+    <Compile Include="Assets\Geometry\Primitive\Scripts\APrimitiveMeshGenerator.cs" />
+    <Compile Include="Assets\Geometry\Primitive\Scripts\CircleGenerator.cs" />
+    <Compile Include="Assets\Geometry\Primitive\Scripts\ExtensionMethods.cs" />
+    <Compile Include="Assets\Geometry\Primitive\Scripts\PlainGenerator.cs" />
+    <Compile Include="Assets\Geometry\Primitive\Scripts\Primitives.cs" />
+    <Compile Include="Assets\Geometry\Spheroid\Scripts\ASpheroidGenerator.cs" />
+    <Compile Include="Assets\Geometry\Spheroid\Scripts\SpheroidGenerator.cs" />
     <Compile Include="Assets\Random\Lottery\Example\Scripts\LotteryRandomAudioClip.cs" />
     <Compile Include="Assets\Random\Lottery\Example\Scripts\LotteryRandomInt.cs" />
     <Compile Include="Assets\Random\Lottery\Example\Scripts\LotteryRandomSprite.cs" />
@@ -79,6 +84,9 @@
     <Compile Include="Assets\Random\Lottery\Scripts\Lottery.cs" />
     <Compile Include="Assets\Random\Lottery\Scripts\LotteryManager.cs" />
     <Compile Include="Assets\Random\Lottery\Scripts\LotteryMode.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\Geometry\Materials\DebugUV.shader" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\SyntaxTree\UnityVS\2015\UnityVS.CSharp.targets" />
 </Project>
