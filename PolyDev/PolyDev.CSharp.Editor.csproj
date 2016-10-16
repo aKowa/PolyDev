@@ -113,12 +113,13 @@
   <ItemGroup>
     <Compile Include="Assets\Geometry\Primitive\Scripts\Editor\MeshGeneratorEditor.cs" />
     <Compile Include="Assets\Geometry\Spheroid\Scripts\Editor\SpheroidGeneratorEditor.cs" />
-    <Compile Include="Assets\Random\Lottery\Example\Scripts\Editor\LotteryRandomAudioClipEditor.cs" />
-    <Compile Include="Assets\Random\Lottery\Example\Scripts\Editor\LotteryRandomIntEditor.cs" />
-    <Compile Include="Assets\Random\Lottery\Example\Scripts\Editor\LotteryRandomSpriteEditor.cs" />
+    <Compile Include="Assets\Lottery\Example\Scripts\Editor\LotteryRandomAudioClipEditor.cs" />
+    <Compile Include="Assets\Lottery\Example\Scripts\Editor\LotteryRandomIntEditor.cs" />
+    <Compile Include="Assets\Lottery\Example\Scripts\Editor\LotteryRandomSpriteEditor.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Assets\Geometry\Materials\DebugUV.shader" />
+    <None Include="Assets\Geometry\Materials\Debug_Checker.shader" />
+    <None Include="Assets\Geometry\Materials\Debug_ColorUV.shader" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\SyntaxTree\UnityVS\2015\UnityVS.CSharp.targets" />
 </Project>

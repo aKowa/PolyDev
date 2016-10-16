@@ -1,4 +1,4 @@
-﻿Shader "FX/DebugUV"
+﻿Shader "PolyPaw/Debug/ColorUV"
 {
 	SubShader
 	{

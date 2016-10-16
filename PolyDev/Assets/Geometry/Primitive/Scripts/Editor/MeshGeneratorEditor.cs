@@ -2,7 +2,7 @@
 using UnityEditor;
 using PolyDev.Geometry;
 
-[CustomEditor(typeof(APrimitiveMeshGenerator), true)]
+[CustomEditor( typeof( APrimitiveMeshGenerator ), true )]
 public class MeshGeneratorEditor : Editor
 {
 	public override void OnInspectorGUI()

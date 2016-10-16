@@ -74,19 +74,21 @@
     <Compile Include="Assets\Geometry\Primitive\Scripts\ExtensionMethods.cs" />
     <Compile Include="Assets\Geometry\Primitive\Scripts\PlainGenerator.cs" />
     <Compile Include="Assets\Geometry\Primitive\Scripts\Primitives.cs" />
+    <Compile Include="Assets\Geometry\Slice\SliceMesh.cs" />
     <Compile Include="Assets\Geometry\Spheroid\Scripts\ASpheroidGenerator.cs" />
     <Compile Include="Assets\Geometry\Spheroid\Scripts\SpheroidGenerator.cs" />
-    <Compile Include="Assets\Random\Lottery\Example\Scripts\LotteryRandomAudioClip.cs" />
-    <Compile Include="Assets\Random\Lottery\Example\Scripts\LotteryRandomInt.cs" />
-    <Compile Include="Assets\Random\Lottery\Example\Scripts\LotteryRandomSprite.cs" />
-    <Compile Include="Assets\Random\Lottery\Scripts\ExtensionMethods.cs" />
-    <Compile Include="Assets\Random\Lottery\Scripts\ExtensionMethodsInternal.cs" />
-    <Compile Include="Assets\Random\Lottery\Scripts\Lottery.cs" />
-    <Compile Include="Assets\Random\Lottery\Scripts\LotteryManager.cs" />
-    <Compile Include="Assets\Random\Lottery\Scripts\LotteryMode.cs" />
+    <Compile Include="Assets\Lottery\Example\Scripts\LotteryRandomAudioClip.cs" />
+    <Compile Include="Assets\Lottery\Example\Scripts\LotteryRandomInt.cs" />
+    <Compile Include="Assets\Lottery\Example\Scripts\LotteryRandomSprite.cs" />
+    <Compile Include="Assets\Lottery\Scripts\ExtensionMethods.cs" />
+    <Compile Include="Assets\Lottery\Scripts\ExtensionMethodsInternal.cs" />
+    <Compile Include="Assets\Lottery\Scripts\Lottery.cs" />
+    <Compile Include="Assets\Lottery\Scripts\LotteryManager.cs" />
+    <Compile Include="Assets\Lottery\Scripts\LotteryMode.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Assets\Geometry\Materials\DebugUV.shader" />
+    <None Include="Assets\Geometry\Materials\Debug_Checker.shader" />
+    <None Include="Assets\Geometry\Materials\Debug_ColorUV.shader" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\SyntaxTree\UnityVS\2015\UnityVS.CSharp.targets" />
 </Project>

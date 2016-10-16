@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-using PolyDev.Random.Lottery;
+using PolyDev.Lottery;
 
 public class LotteryRandomInt : MonoBehaviour
 {
