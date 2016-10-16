@@ -1,4 +1,4 @@
 sceneSetups:
-- path: C:/Users/Schnuffel/Developement/Tools/Water2D/Water2D/Assets/Content/Scenes/MeshGeneration_Test.unity
+- path: Assets/Geometry/Slice/Example_Slice.unity
   isLoaded: 1
   isActive: 1
