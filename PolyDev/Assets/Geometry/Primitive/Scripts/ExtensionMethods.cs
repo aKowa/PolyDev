@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UDebug = UnityEngine.Debug;
 
 namespace PolyDev.Geometry
 {
@@ -99,7 +100,7 @@ namespace PolyDev.Geometry
 			}
 			else
 			{
-				Debug.LogError( "Mesh to copy equals null" );
+				UDebug.LogError( "Mesh to copy equals null" );
 				return null;
 			}
 		}

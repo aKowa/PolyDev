@@ -13,13 +13,11 @@
     <TargetFrameworkIdentifier>.NETFramework</TargetFrameworkIdentifier>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <TargetFrameworkProfile>Unity Subset v3.5</TargetFrameworkProfile>
-    <CompilerResponseFile>
-    </CompilerResponseFile>
+    <CompilerResponseFile></CompilerResponseFile>
     <UnityProjectType>Game:1</UnityProjectType>
     <UnityBuildTarget>StandaloneWindows:5</UnityBuildTarget>
     <UnityVersion>5.4.1f1</UnityVersion>
-    <RootNamespace>
-    </RootNamespace>
+    <RootNamespace></RootNamespace>
     <LangVersion Condition=" '$(VisualStudioVersion)' != '10.0' ">4</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -71,14 +69,20 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Geometry\CallTest.cs" />
+    <Compile Include="Assets\Geometry\DebugVisual\DebugVisual.cs" />
+    <Compile Include="Assets\Geometry\ParentTest.cs" />
     <Compile Include="Assets\Geometry\Primitive\Scripts\APrimitiveMeshGenerator.cs" />
     <Compile Include="Assets\Geometry\Primitive\Scripts\CircleGenerator.cs" />
     <Compile Include="Assets\Geometry\Primitive\Scripts\ExtensionMethods.cs" />
     <Compile Include="Assets\Geometry\Primitive\Scripts\PlainGenerator.cs" />
     <Compile Include="Assets\Geometry\Primitive\Scripts\Primitives.cs" />
+    <Compile Include="Assets\Geometry\Slice\Example\CubeController.cs" />
+    <Compile Include="Assets\Geometry\Slice\ISlicable.cs" />
     <Compile Include="Assets\Geometry\Slice\Slicer.cs" />
     <Compile Include="Assets\Geometry\Spheroid\Scripts\ASpheroidGenerator.cs" />
     <Compile Include="Assets\Geometry\Spheroid\Scripts\SpheroidGenerator.cs" />
+    <Compile Include="Assets\Geometry\Test.cs" />
     <Compile Include="Assets\Lottery\Example\Scripts\LotteryRandomAudioClip.cs" />
     <Compile Include="Assets\Lottery\Example\Scripts\LotteryRandomInt.cs" />
     <Compile Include="Assets\Lottery\Example\Scripts\LotteryRandomSprite.cs" />
@@ -89,8 +93,8 @@
     <Compile Include="Assets\Lottery\Scripts\LotteryMode.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Assets\Geometry\Materials\Debug_Checker.shader" />
-    <None Include="Assets\Geometry\Materials\Debug_ColorUV.shader" />
+    <None Include="Assets\Geometry\DebugVisual\Materials\Debug_Checker.shader" />
+    <None Include="Assets\Geometry\DebugVisual\Materials\Debug_ColorUV.shader" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\SyntaxTree\UnityVS\2015\UnityVS.CSharp.targets" />
 </Project>

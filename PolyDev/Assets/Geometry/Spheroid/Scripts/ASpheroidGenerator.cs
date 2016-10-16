@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UDebug = UnityEngine.Debug;
 
 namespace PolyDev.Geometry
 {
@@ -46,7 +47,7 @@ namespace PolyDev.Geometry
 		}
 
 
-		// Debug Methods
+		// ADebug Methods
 		protected virtual void Update()
 		{
 			//ShowNormals( Mesh );
@@ -56,7 +57,7 @@ namespace PolyDev.Geometry
 		{
 			for ( int i = 0; i < normalMesh.vertexCount; i++ )
 			{
-				Debug.DrawRay( normalMesh.vertices[i], normalMesh.normals[i] * 0.1f, Color.red );
+				UDebug.DrawRay( normalMesh.vertices[i], normalMesh.normals[i] * 0.1f, Color.red );
 			}
 		}
 

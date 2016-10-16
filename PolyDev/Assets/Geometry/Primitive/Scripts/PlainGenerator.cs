@@ -46,7 +46,7 @@ namespace PolyDev.Geometry
 				var dX = vertices[k].x - vertices[0].x;
 				var dY = vertices[k].y - vertices[0].y;
 				uvs[k] = new Vector2( dX / width, dY / height );
-				//Debug.Log(  "Vertex:" + vertices[k] + " uv:  " + uvs[k].x + ", " + uvs[k].y );
+				//ADebug.Log(  "Vertex:" + vertices[k] + " uv:  " + uvs[k].x + ", " + uvs[k].y );
 			}
 
 			// apply to mesh and renderer

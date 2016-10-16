@@ -34,7 +34,7 @@ namespace PolyDev.Geometry
 				triangles[t] = 0;
 				triangles[t + 1] = k + 1;
 				triangles[t + 2] = k + 2;
-				//Debug.Log( "Triangle: " + triangles[t] + " " + triangles[t + 1] + " " + triangles[t + 2] );
+				//ADebug.Log( "Triangle: " + triangles[t] + " " + triangles[t + 1] + " " + triangles[t + 2] );
 			}
 
 			triangles[triangles.Length - 3] = 0;
@@ -48,7 +48,7 @@ namespace PolyDev.Geometry
 				var dX = vertices[k].x + radius;
 				var dY = vertices[k].y + radius;
 				uvs[k] = new Vector2( dX / ( radius * 2 ), dY / ( radius * 2 ) );
-				//Debug.Log( "Vert: " + vertices[k] + " UV: " + uvs[k] );
+				//ADebug.Log( "Vert: " + vertices[k] + " UV: " + uvs[k] );
 			}
 
 			// apply to mesh and renderer

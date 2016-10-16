@@ -44,7 +44,7 @@ namespace PolyDev.Geometry
 
 
 
-		// Debug Sphere
+		// ADebug Sphere
 		private void DebugCreateSphere( Vector3 point )
 		{
 			DebugCreateSphere( point, Color.red );
