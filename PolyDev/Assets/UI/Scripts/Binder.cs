@@ -1,35 +1,43 @@
 ﻿using System;
+using JetBrains.Annotations;
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace PolyDev.UI
 {
-	public class Binder<T>
+	public class Binder<T> where T : Component
 	{
-		private T value;
-		private Text target;
+		private ValueType value;
+		private T target;
 
-		public Binder( Text newTarget )
+		public Binder ( Component mono )
 		{
-			target = newTarget;
-		}
-
-		public Binder( MonoBehaviour mono )
-		{
-			target = mono.GetComponent<Text> ();
-			if ( target == null )
+			target = mono.GetComponent<T> ();
+			if (target == null)
 			{
-				throw new NullReferenceException("There is no Text Component assigned to " + mono.name);
+				throw new NullReferenceException ( "There is no CanvasElement of type: " + typeof(T) +  " assigned to " + mono.name );
 			}
 		}
 
-		public T Value
+		public ValueType Value
 		{
 			get { return value; }
 			set
 			{
 				this.value = value;
-				target.text = value.ToString();
+
+				if (typeof ( T ) == typeof ( Text ))
+				{
+					AssignText ();
+				}
+			}
+		}
+
+		private void AssignText()
+		{
+			var t = target as UnityEngine.UI.Text;
+			if (t != null)
+			{
+				t.text = value.ToString ();
 			}
 		}
 	}

@@ -71,9 +71,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Geometry\AParent.cs" />
     <Compile Include="Assets\Geometry\Behavior.cs" />
     <Compile Include="Assets\Geometry\DebugVisual\DebugVisual.cs" />
-    <Compile Include="Assets\Geometry\AParent.cs" />
+    <Compile Include="Assets\Geometry\MyClass.cs" />
     <Compile Include="Assets\Geometry\Primitive\Scripts\APrimitiveMeshGenerator.cs" />
     <Compile Include="Assets\Geometry\Primitive\Scripts\CircleGenerator.cs" />
     <Compile Include="Assets\Geometry\Primitive\Scripts\ExtensionMethods.cs" />
@@ -84,7 +85,6 @@
     <Compile Include="Assets\Geometry\Slice\Slicer.cs" />
     <Compile Include="Assets\Geometry\Spheroid\Scripts\ASpheroidGenerator.cs" />
     <Compile Include="Assets\Geometry\Spheroid\Scripts\SpheroidGenerator.cs" />
-    <Compile Include="Assets\Geometry\MyClass.cs" />
     <Compile Include="Assets\Lottery\Example\Scripts\LotteryRandomAudioClip.cs" />
     <Compile Include="Assets\Lottery\Example\Scripts\LotteryRandomInt.cs" />
     <Compile Include="Assets\Lottery\Example\Scripts\LotteryRandomSprite.cs" />
@@ -94,6 +94,7 @@
     <Compile Include="Assets\Lottery\Scripts\LotteryManager.cs" />
     <Compile Include="Assets\Lottery\Scripts\LotteryMode.cs" />
     <Compile Include="Assets\UI\Scripts\Binder.cs" />
+    <Compile Include="Assets\UI\Scripts\UIType.cs" />
     <Compile Include="Assets\UI\Scripts\UIController.cs" />
   </ItemGroup>
   <ItemGroup>
