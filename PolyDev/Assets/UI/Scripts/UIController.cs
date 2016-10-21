@@ -1,15 +1,15 @@
 ﻿using UnityEngine;
-using UnityUI = UnityEngine.UI;
+using UnityEngine.UI;
 using PolyDev.UI;
 
-[RequireComponent(typeof(UnityUI.Text))]
+[RequireComponent(typeof(Text))]
 public class UIController : MonoBehaviour
 {
-	private Binder<Text> myTime;
+	private Binder<float, Text> myTime;
 
 	public void Start ()
 	{
-		myTime = new Binder<Text>( this );	
+		myTime = new Binder<float, Text>( this );
 	}
 
 	public void Update ()

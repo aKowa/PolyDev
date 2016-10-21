@@ -94,7 +94,6 @@
     <Compile Include="Assets\Lottery\Scripts\LotteryManager.cs" />
     <Compile Include="Assets\Lottery\Scripts\LotteryMode.cs" />
     <Compile Include="Assets\UI\Scripts\Binder.cs" />
-    <Compile Include="Assets\UI\Scripts\UIType.cs" />
     <Compile Include="Assets\UI\Scripts\UIController.cs" />
   </ItemGroup>
   <ItemGroup>
