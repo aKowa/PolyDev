@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Geometry/Slice/Example_Slice.unity
+- path: Assets/UI/Example_UI.unity
   isLoaded: 1
   isActive: 1

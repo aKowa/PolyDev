@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public abstract class ParentTest
+public abstract class AParent
 {
 	private int myInt;
 	protected int MyInt
