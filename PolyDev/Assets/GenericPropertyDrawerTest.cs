@@ -1,16 +1,6 @@
 ﻿using UnityEngine;
-using System.Collections;
 using UnityEditor;
-using System.Linq;
 using System;
-using System.Reflection;
-using System.Reflection.Emit;
-
-public class GenericClass<T>
-{
-	public T variable;
-}
-
 
 [System.Serializable]
 public class DerivedClass
@@ -25,34 +15,52 @@ public class DerivedClass
 public class GenericDrawer : PropertyDrawer
 {
 	private GameObject obj;
-	private Component component;
 	private Component[] components;
-	private string[] componentNames;
-	private int index = 0;
+	private string[] componentNames = {"None"};
+	private int index;
+
+	private const float fieldHeight = 16;
 
 	public override void OnGUI( Rect position, SerializedProperty property, GUIContent label )
 	{
 		EditorGUI.BeginProperty( position, label, property );
-		
-		var objRect = new Rect ( position.x, position.y, 90, position.height );
+
+		var width = position.width / 2;
+
+		var labelRect = new Rect( position.x, position.y, position.width, fieldHeight );
+		EditorGUI.LabelField( labelRect, label );
+
+		var objRect = new Rect ( position.x, position.y + fieldHeight, width, fieldHeight );
+
+		#pragma warning disable 618
 		obj = (GameObject)EditorGUI.ObjectField ( objRect, GUIContent.none, obj, typeof ( GameObject ) );
+		#pragma warning restore 618
 
 		if ( obj != null )
 		{
 			components = obj.GetComponents<Component>();
-			componentNames = new string[components.Length];
-			for ( int i = 0; i < componentNames.Length; i++ )
-			{
-				componentNames[i] = components[i].GetType().ToString();
-			}
-
-			EditorGUILayout.Popup ( index, componentNames );
-			component = components[index];
+			componentNames = ConvertToStringArray( components );
 		}
 
-		//var componentRect = new Rect ( position.x + 95, position.y, 90, position.height );
-		//EditorGUI.EnumPopup( componentRect, components );
+		var unitRect = new Rect ( position.x + width, position.y + fieldHeight, width, fieldHeight );
+		index = EditorGUI.Popup ( unitRect, index, componentNames );
 
 		EditorGUI.EndProperty ();
+	}
+
+	// Convert a Component array to a string array
+	private string[] ConvertToStringArray( Component[] o )
+	{
+		var targetStringArray = new string[o.Length];
+		for ( int i = 0; i < o.Length; i++ )
+		{
+			targetStringArray[i] = o[i].GetType().ToString();
+		}
+		return targetStringArray;
+	}
+
+	public override float GetPropertyHeight( SerializedProperty property, GUIContent label )
+	{
+		return fieldHeight * 2;
 	}
 }

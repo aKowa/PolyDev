@@ -9,7 +9,6 @@ namespace PolyDev.UI
 	/// </summary>
 	/// <typeparam name="TValue">Value type.</typeparam>
 	/// <typeparam name="TTarget">Type of target Component.</typeparam>
-	[System.Serializable]
 	public class Binder<TValue,TTarget> where TTarget : Component
 	{
 		protected TTarget target;
@@ -23,11 +22,16 @@ namespace PolyDev.UI
 		/// <param name="mono">Behavior that has the target Component attached. </param>
 		/// <param name="propertyName">The name of the property that should be bound to this value.</param>
 		public Binder ( MonoBehaviour mono, string propertyName )
+		{ 
+			SetParameter( mono, propertyName );
+		}
+
+		protected void SetParameter( MonoBehaviour mono, string propertyName )
 		{
 			target = mono.GetComponent<TTarget> ();
 			if (target == null)
 			{
-				throw new NullReferenceException ( "There is no CanvasElement of type: " + typeof(TTarget) +  " assigned to " + mono.name );
+				throw new NullReferenceException ( "There is no CanvasElement of type: " + typeof ( TTarget ) + " assigned to " + mono.name );
 			}
 			propInfo = target.GetType ().GetProperty ( propertyName );
 		}

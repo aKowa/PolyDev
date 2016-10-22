@@ -13,13 +13,11 @@
     <TargetFrameworkIdentifier>.NETFramework</TargetFrameworkIdentifier>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <TargetFrameworkProfile>Unity Subset v3.5</TargetFrameworkProfile>
-    <CompilerResponseFile>
-    </CompilerResponseFile>
+    <CompilerResponseFile></CompilerResponseFile>
     <UnityProjectType>Game:1</UnityProjectType>
     <UnityBuildTarget>StandaloneWindows:5</UnityBuildTarget>
     <UnityVersion>5.4.1f1</UnityVersion>
-    <RootNamespace>
-    </RootNamespace>
+    <RootNamespace></RootNamespace>
     <LangVersion Condition=" '$(VisualStudioVersion)' != '10.0' ">4</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -71,8 +69,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\AParent.cs" />
-    <Compile Include="Assets\Behavior.cs" />
     <Compile Include="Assets\ExampleClass.cs" />
     <Compile Include="Assets\GenericPropertyDrawerTest.cs" />
     <Compile Include="Assets\Geometry\DebugVisual\DebugVisual.cs" />
@@ -86,7 +82,6 @@
     <Compile Include="Assets\Geometry\Slice\Slicer.cs" />
     <Compile Include="Assets\Geometry\Spheroid\Scripts\ASpheroidGenerator.cs" />
     <Compile Include="Assets\Geometry\Spheroid\Scripts\SpheroidGenerator.cs" />
-    <Compile Include="Assets\IngredientDrawer.cs" />
     <Compile Include="Assets\Lottery\Example\Scripts\LotteryRandomAudioClip.cs" />
     <Compile Include="Assets\Lottery\Example\Scripts\LotteryRandomInt.cs" />
     <Compile Include="Assets\Lottery\Example\Scripts\LotteryRandomSprite.cs" />
@@ -95,8 +90,10 @@
     <Compile Include="Assets\Lottery\Scripts\Lottery.cs" />
     <Compile Include="Assets\Lottery\Scripts\LotteryManager.cs" />
     <Compile Include="Assets\Lottery\Scripts\LotteryMode.cs" />
-    <Compile Include="Assets\MyClass.cs" />
+    <Compile Include="Assets\UI\Scripts\BindFloatToText.cs" />
     <Compile Include="Assets\UI\Scripts\Binder.cs" />
+    <Compile Include="Assets\UI\Scripts\BinderColorExample.cs" />
+    <Compile Include="Assets\UI\Scripts\BinderDrawer.cs" />
     <Compile Include="Assets\UI\Scripts\BinderEnumExample.cs" />
     <Compile Include="Assets\UI\Scripts\BinderFloatExample.cs" />
   </ItemGroup>
