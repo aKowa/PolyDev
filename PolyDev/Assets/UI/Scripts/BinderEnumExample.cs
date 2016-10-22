@@ -7,10 +7,10 @@ using PolyDev.UI;
 public class BinderEnumExample : MonoBehaviour
 {
 	public Binder<States, Text> myStates;
-
+	
 	public void Start ()
 	{
-		myStates = new Binder<States, Text> ( this, "text" );
+		myStates = new Binder<States,Text> ( this, "text" );
 		StartCoroutine ( Wait () );
 	}
 

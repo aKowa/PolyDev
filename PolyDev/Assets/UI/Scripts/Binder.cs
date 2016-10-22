@@ -12,8 +12,10 @@ namespace PolyDev.UI
 	[System.Serializable]
 	public class Binder<TValue,TTarget> where TTarget : Component
 	{
-		private readonly TTarget target;
-		private readonly PropertyInfo propInfo;
+		protected TTarget target;
+		protected PropertyInfo propInfo;
+		
+		public Binder () { }
 
 		/// <summary>
 		/// Constructs Binder object.
