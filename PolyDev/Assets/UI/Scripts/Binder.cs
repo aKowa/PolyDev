@@ -9,6 +9,7 @@ namespace PolyDev.UI
 	/// </summary>
 	/// <typeparam name="TValue">Value type.</typeparam>
 	/// <typeparam name="TTarget">Type of target Component.</typeparam>
+	[System.Serializable]
 	public class Binder<TValue,TTarget> where TTarget : Component
 	{
 		private readonly TTarget target;
