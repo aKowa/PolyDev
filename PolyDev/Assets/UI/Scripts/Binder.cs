@@ -1,22 +1,27 @@
 ﻿using System;
+using System.Reflection;
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace PolyDev.UI
 {
 	public class Binder<TValue,TTarget> where TTarget : Component
 	{
 		private TValue value;
-		private TTarget target;
+		private readonly TTarget target;
+		private readonly PropertyInfo propInfo;
 
-		public Binder ( MonoBehaviour mono )
+		public Binder ( MonoBehaviour mono, string propertyName )
 		{
 			target = mono.GetComponent<TTarget> ();
 			if (target == null)
 			{
 				throw new NullReferenceException ( "There is no CanvasElement of type: " + typeof(TTarget) +  " assigned to " + mono.name );
 			}
+			propInfo = target.GetType ().GetProperty ( propertyName );
 		}
+
+
+
 
 		public TValue Value
 		{
@@ -24,20 +29,7 @@ namespace PolyDev.UI
 			set
 			{
 				this.value = value;
-
-				if (typeof ( TTarget ) == typeof ( Text ))
-				{
-					AssignText ();
-				}
-			}
-		}
-
-		private void AssignText()
-		{
-			var t = target as Text;
-			if (t != null)
-			{
-				t.text = value.ToString ();
+				propInfo.SetValue( target, Convert.ChangeType( value, propInfo.PropertyType ), null );
 			}
 		}
 	}
