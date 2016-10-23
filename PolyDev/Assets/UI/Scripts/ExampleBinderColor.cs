@@ -3,13 +3,13 @@ using UnityEngine.UI;
 using PolyDev.UI;
 
 [RequireComponent(typeof(Image))]
-public class BinderColorExample : MonoBehaviour
+public class ExampleBinderColor : MonoBehaviour
 {
-	public Binder<Color, Image> myColor;
+	public Binder<Color> myColor;
 
 	public void Start ()
 	{
-		myColor = new Binder<Color, Image>( this.gameObject, "color" );
+		myColor = new Binder<Color>( "color" );
 	}
 
 	public void Update ()

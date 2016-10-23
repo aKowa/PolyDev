@@ -4,13 +4,13 @@ using UnityEngine.UI;
 using PolyDev.UI;
 
 [RequireComponent ( typeof ( Text ) )]
-public class BinderEnumExample : MonoBehaviour
+public class ExampleBinderEnum : MonoBehaviour
 {
-	public Binder<States, Text> myStates;
+	public Binder<States> myStates;
 	
 	public void Start ()
 	{
-		myStates = new Binder<States,Text> ( this.gameObject, "text" );
+		myStates = new Binder<States> ( "text" );
 		StartCoroutine ( Wait () );
 	}
 

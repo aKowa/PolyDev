@@ -94,10 +94,10 @@
     <Compile Include="Assets\Lottery\Scripts\LotteryMode.cs" />
     <Compile Include="Assets\UI\Scripts\BindFloatToText.cs" />
     <Compile Include="Assets\UI\Scripts\Binder.cs" />
-    <Compile Include="Assets\UI\Scripts\BinderColorExample.cs" />
+    <Compile Include="Assets\UI\Scripts\ExampleBinderColor.cs" />
     <Compile Include="Assets\UI\Scripts\BinderDrawer.cs" />
-    <Compile Include="Assets\UI\Scripts\BinderEnumExample.cs" />
-    <Compile Include="Assets\UI\Scripts\BinderFloatExample.cs" />
+    <Compile Include="Assets\UI\Scripts\ExampleBinderEnum.cs" />
+    <Compile Include="Assets\UI\Scripts\ExampleBinderFloat.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Geometry\DebugVisual\Materials\Debug_Checker.shader" />

@@ -5,6 +5,7 @@ using System;
 public class GenericClass<T>
 {
 	public T value;
+	public GameObject obj;
 }
 
 [System.Serializable]
@@ -12,6 +13,7 @@ public class DerivedClass : GenericClass<float>{}
 
 [System.Serializable]
 public class OtherDerivedClass : GenericClass<States>{}
+
 
 
 [CustomPropertyDrawer ( typeof (DerivedClass) )]
@@ -32,18 +34,19 @@ public class GenericDrawer : PropertyDrawer
 		var width = position.width / 2;
 
 		var labelRect = new Rect ( position.x, position.y, position.width, fieldHeight );
-		//EditorGUI.LabelField ( labelRect, label );
 		EditorGUI.PropertyField( labelRect, property.FindPropertyRelative( "value" ) );
 
 
 		var objRect = new Rect ( position.x, position.y + fieldHeight, width, fieldHeight );
+		EditorGUI.PropertyField( objRect, property.FindPropertyRelative( "obj" ), GUIContent.none );
 
 #pragma warning disable 618
-		obj = (GameObject)EditorGUI.ObjectField ( objRect, GUIContent.none, obj, typeof ( GameObject ) );
+		//obj = (GameObject)EditorGUI.ObjectField ( objRect, GUIContent.none, obj, typeof ( GameObject ) );
 #pragma warning restore 618
 
 		if (obj != null)
 		{
+			EditorUtility.SetDirty ( obj );
 			components = obj.GetComponents<Component> ();
 			componentNames = ConvertToStringArray ( components );
 		}

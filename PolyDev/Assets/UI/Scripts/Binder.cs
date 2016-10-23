@@ -4,24 +4,11 @@ using UnityEngine;
 
 namespace PolyDev.UI
 {
-	public class Binder<TValue, TComponent> where TComponent : Component
+	public class Binder<TValue> 
 	{
-		public GameObject targetGameObject;
-
-		private TComponent targetComponent;
-		protected TComponent TargetComponent
-		{
-			get
-			{
-				if (targetComponent != null)
-				{
-					return targetComponent;
-				}
-				return targetComponent = targetGameObject.GetComponent<TComponent> ();
-			}
-		}
-
+		public Component targetComponent;
 		public string targetPropertyName;
+
 		private PropertyInfo propInfo;
 		protected PropertyInfo PropInfo
 		{
@@ -31,15 +18,14 @@ namespace PolyDev.UI
 				{
 					return propInfo;
 				}
-				return propInfo = TargetComponent.GetType ().GetProperty ( targetPropertyName );
+				return propInfo = targetComponent.GetType ().GetProperty ( targetPropertyName );
 			}
 		}
 
 		public Binder(){}
 		
-		public Binder( GameObject targetGameObject, string targetPropertyName )
+		public Binder( string targetPropertyName )
 		{
-			this.targetGameObject = targetGameObject;
 			this.targetPropertyName = targetPropertyName;
 		}
 
@@ -53,10 +39,10 @@ namespace PolyDev.UI
 				UpdateBoundProperty();
 			}
 		}
-
+		
 		public void UpdateBoundProperty()
 		{
-			PropInfo.SetValue( this.TargetComponent, Convert.ChangeType( this.valueUnbound, PropInfo.PropertyType ), null );
+			PropInfo.SetValue( this.targetComponent, Convert.ChangeType( this.valueUnbound, PropInfo.PropertyType ), null );
 		}
 	}
 }
