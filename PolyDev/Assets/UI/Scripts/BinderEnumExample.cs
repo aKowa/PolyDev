@@ -10,7 +10,7 @@ public class BinderEnumExample : MonoBehaviour
 	
 	public void Start ()
 	{
-		myStates = new Binder<States,Text> ( this, "text" );
+		myStates = new Binder<States,Text> ( this.gameObject, "text" );
 		StartCoroutine ( Wait () );
 	}
 

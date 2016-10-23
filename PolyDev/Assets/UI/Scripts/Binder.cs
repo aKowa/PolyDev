@@ -4,62 +4,59 @@ using UnityEngine;
 
 namespace PolyDev.UI
 {
-	/// <summary>
-	/// Binder class.
-	/// </summary>
-	/// <typeparam name="TValue">Value type.</typeparam>
-	/// <typeparam name="TTarget">Type of target Component.</typeparam>
-	public class Binder<TValue,TTarget> where TTarget : Component
+	public class Binder<TValue, TComponent> where TComponent : Component
 	{
-		protected TTarget target;
-		protected PropertyInfo propInfo;
-		
-		public Binder () { }
+		public GameObject targetGameObject;
 
-		/// <summary>
-		/// Constructs Binder object.
-		/// </summary>
-		/// <param name="mono">Behavior that has the target Component attached. </param>
-		/// <param name="propertyName">The name of the property that should be bound to this value.</param>
-		public Binder ( MonoBehaviour mono, string propertyName )
-		{ 
-			SetParameter( mono, propertyName );
-		}
-
-		protected void SetParameter( MonoBehaviour mono, string propertyName )
+		private TComponent targetComponent;
+		protected TComponent TargetComponent
 		{
-			target = mono.GetComponent<TTarget> ();
-			if (target == null)
+			get
 			{
-				throw new NullReferenceException ( "There is no CanvasElement of type: " + typeof ( TTarget ) + " assigned to " + mono.name );
+				if (targetComponent != null)
+				{
+					return targetComponent;
+				}
+				return targetComponent = targetGameObject.GetComponent<TComponent> ();
 			}
-			propInfo = target.GetType ().GetProperty ( propertyName );
 		}
 
-		/// <summary>
-		/// Value Field, which updates bound Component property in Setter.
-		/// </summary>
+		public string targetPropertyName;
+		private PropertyInfo propInfo;
+		protected PropertyInfo PropInfo
+		{
+			get
+			{
+				if (propInfo != null)
+				{
+					return propInfo;
+				}
+				return propInfo = TargetComponent.GetType ().GetProperty ( targetPropertyName );
+			}
+		}
+
+		public Binder(){}
+		
+		public Binder( GameObject targetGameObject, string targetPropertyName )
+		{
+			this.targetGameObject = targetGameObject;
+			this.targetPropertyName = targetPropertyName;
+		}
+
+		public TValue valueUnbound;
 		public TValue Value
 		{
-			get { return ValueUnbound; }
+			get { return valueUnbound; }
 			set
 			{
-				this.ValueUnbound = value;
+				this.valueUnbound = value;
 				UpdateBoundProperty();
 			}
 		}
 
-		/// <summary>
-		/// Updates the bound property to this value.
-		/// </summary>
 		public void UpdateBoundProperty()
 		{
-			propInfo.SetValue ( target, Convert.ChangeType ( this.ValueUnbound, propInfo.PropertyType ), null );
+			PropInfo.SetValue( this.TargetComponent, Convert.ChangeType( this.valueUnbound, PropInfo.PropertyType ), null );
 		}
-
-		/// <summary>
-		/// Gets and Sets value without updating the bound property. Note: Use UpdateBoundProperty() to do so.
-		/// </summary>
-		public TValue ValueUnbound { get; set; }
 	}
 }

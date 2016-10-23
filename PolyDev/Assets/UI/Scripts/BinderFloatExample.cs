@@ -1,6 +1,6 @@
-﻿using UnityEngine;
+﻿using PolyDev.UI;
+using UnityEngine;
 using UnityEngine.UI;
-using PolyDev.UI;
 
 [RequireComponent ( typeof ( Text ) )]
 public class BinderFloatExample : MonoBehaviour

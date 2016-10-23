@@ -9,7 +9,7 @@ public class BinderColorExample : MonoBehaviour
 
 	public void Start ()
 	{
-		myColor = new Binder<Color, Image>( this, "color" );
+		myColor = new Binder<Color, Image>( this.gameObject, "color" );
 	}
 
 	public void Update ()
