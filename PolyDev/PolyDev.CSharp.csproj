@@ -90,12 +90,12 @@
     <Compile Include="Assets\Lottery\Lottery.cs" />
     <Compile Include="Assets\Lottery\LotteryManager.cs" />
     <Compile Include="Assets\Lottery\LotteryMode.cs" />
-    <Compile Include="Assets\UI\Scripts\BindFloatToText.cs" />
-    <Compile Include="Assets\UI\Scripts\Binder.cs" />
+    <Compile Include="Assets\UI\Scripts\Bind.cs" />
+    <Compile Include="Assets\UI\Scripts\BindTypes.cs" />
     <Compile Include="Assets\UI\Scripts\BinderDrawer.cs" />
-    <Compile Include="Assets\UI\Scripts\ExampleBinderColor.cs" />
-    <Compile Include="Assets\UI\Scripts\ExampleBinderEnum.cs" />
-    <Compile Include="Assets\UI\Scripts\ExampleBinderFloat.cs" />
+    <Compile Include="Assets\UI\Scripts\ExampleBindColor.cs" />
+    <Compile Include="Assets\UI\Scripts\ExampleBindEnum.cs" />
+    <Compile Include="Assets\UI\Scripts\ExampleBindFloat.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Geometry\DebugVisual\Materials\Debug_Checker.shader" />

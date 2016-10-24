@@ -4,14 +4,13 @@ using UnityEngine.UI;
 using PolyDev.UI;
 
 [RequireComponent ( typeof ( Text ) )]
-public class ExampleBinderEnum : MonoBehaviour
+public class ExampleBindEnum : MonoBehaviour
 {
-	public Binder<States> myStates;
-	
+	public Bind<States, Text> myStates;
+
 	public void Start ()
 	{
-		myStates = new Binder<States> ( "text" );
-		StartCoroutine ( Wait () );
+		myStates = new Bind<States, Text> ( this.gameObject, "text" );
 	}
 
 	private IEnumerator Wait ()

@@ -14,8 +14,6 @@ public class DerivedClass : GenericClass<float>{}
 [System.Serializable]
 public class OtherDerivedClass : GenericClass<States>{}
 
-
-
 [CustomPropertyDrawer ( typeof (DerivedClass) )]
 [CustomPropertyDrawer(typeof(OtherDerivedClass))]
 public class GenericDrawer : PropertyDrawer

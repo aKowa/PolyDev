@@ -3,14 +3,9 @@ using UnityEngine;
 using UnityEngine.UI;
 
 [RequireComponent ( typeof ( Text ) )]
-public class ExampleBinderFloat : MonoBehaviour
+public class ExampleBindFloat : MonoBehaviour
 {
-	public BindFloatToText myTime;
-
-	public void Start()
-	{
-		//myTime = new BindFloatToText( this.gameObject, "text" );
-	}
+	public BindFloat myTime;
 
 	public void Update ()
 	{

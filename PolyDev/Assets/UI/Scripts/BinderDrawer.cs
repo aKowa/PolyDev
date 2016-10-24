@@ -1,109 +1,97 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Reflection;
+﻿using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace PolyDev.UI
 {
-	[CustomPropertyDrawer( typeof (BindFloatToText) )]
+	[CustomPropertyDrawer ( typeof ( BindFloat ) )]
+	[CustomPropertyDrawer ( typeof ( BindColor ) )]
+	[CustomPropertyDrawer ( typeof ( BindInt ) )]
 	public class BinderDrawer : PropertyDrawer
 	{
 		private const float fieldHeight = 16;
 
-		public override void OnGUI( Rect position, SerializedProperty property, GUIContent label )
+		public override void OnGUI ( Rect position, SerializedProperty property, GUIContent label )
 		{
-			EditorGUI.BeginProperty( position, label, property );
-
+			EditorGUI.BeginProperty ( position, label, property );
+			
 			var target = property.serializedObject.targetObject;
 
-			// label
-			var labelRect = new Rect( position.x, position.y, position.width, fieldHeight );
-			EditorGUI.LabelField( labelRect, new GUIContent( property.type ) );
-			
-			// value
-			var valueRect = new Rect ( position.x + 15, position.y + 5 + fieldHeight, position.width - 15, fieldHeight );
-			var serializedValue = property.FindPropertyRelative( "valueUnbound" );
-			EditorGUI.PropertyField( valueRect, serializedValue, new GUIContent("Value") );
+			EditorGUI.BeginChangeCheck ();
 
-			// object
-			var objectRect = new Rect ( position.x + 15, position.y + 10 + fieldHeight * 2, (position.width - 15) / 3, fieldHeight );
+			// value
+			var valueRect = new Rect ( position.x + 15, position.y + 5, position.width, fieldHeight );
+			var serializedValue = property.FindPropertyRelative ( "valueUnbound" );
+			EditorGUI.PropertyField( valueRect, serializedValue, new GUIContent( label.text + " (Unbound)") );
+
+			// rect
+			var objectRect = valueRect;
+			objectRect.y += 5 + fieldHeight;
+			objectRect.width = (objectRect.width / 3) - 5;
 
 			var componentRect = objectRect;
 			componentRect.x += objectRect.width;
 
 			var propertyRect = componentRect;
 			propertyRect.x += componentRect.width;
+			
 
+			// game object
 			var serializedGameObject = property.FindPropertyRelative( "targetGameObject" );
-			var serializedComponent = property.FindPropertyRelative( "targetComponent" );
-			var serializedID = property.FindPropertyRelative ( "propertyID" );
-
-			EditorGUI.PropertyField( objectRect, serializedGameObject, GUIContent.none );
-			EditorGUI.PropertyField ( componentRect, serializedComponent, GUIContent.none );
-
+			EditorGUI.PropertyField ( objectRect, serializedGameObject, GUIContent.none );
 			var gameObj = serializedGameObject.objectReferenceValue as GameObject;
+
+
+			// component
+			var serializedComponent = property.FindPropertyRelative( "targetComponent" );
+			var serializedComponentID = property.FindPropertyRelative ( "componentID" );
+
+			Component[] componentArray = new Component[0];
+			string[] componentNames = { "None" };
+			if (gameObj != null)
+			{
+				componentArray = gameObj.GetComponents<Component> ();
+				componentNames = GetTypeNames( componentArray );
+			}
+			serializedComponentID.intValue = EditorGUI.Popup ( componentRect, serializedComponentID.intValue, componentNames );
 			var component = serializedComponent.objectReferenceValue as Component;
+
+			if ( serializedComponentID.intValue > componentArray.Length)
+			{
+				serializedComponentID.intValue = 0;
+			}
+
+			if ( componentArray.Length > 0)
+			{
+				component = componentArray[serializedComponentID.intValue];
+			}
+
+			// properties
+			var serializedPropertyID = property.FindPropertyRelative ( "propertyID" );
 
 			string[] propertyNames = { "None" };
 			if ( component != null )
 			{
 				propertyNames = GetNames( component.GetType().GetProperties() );
 			}
-
-			serializedID.intValue = EditorGUI.Popup( propertyRect, serializedID.intValue, propertyNames );
-			//Debug.Log( "ID: " + serializedID.intValue );
+			serializedPropertyID.intValue = EditorGUI.Popup( propertyRect, serializedPropertyID.intValue, propertyNames );
+			
+			if ( serializedPropertyID.intValue > propertyNames.Length)
+			{
+				serializedPropertyID.intValue = 0;
+			}
 
 			if ( GUI.changed )
 			{
 				EditorUtility.SetDirty( target );
 			}
 
-			/*
-			gameObj = (GameObject) EditorGUI.ObjectField( objectRect, GUIContent.none, gameObj,typeof (GameObject) );
-
-			// component
-			var componentRect = objectRect;
-			componentRect.x += objectRect.width;
-			var components = new Component[] { };
-			string[] componentArray = {"Component"};
-			if ( gameObj != null )
-			{
-				components = gameObj.GetComponents<Component>();
-				componentArray = GetTypeNames( components );
-			}
-			componentID = EditorGUI.Popup( componentRect, componentID, componentArray );
-			if ( gameObj != null )
-			{
-				component = components[componentID];
-				EditorUtility.SetDirty( target );
-			}
-
-			// property
-			var propertyRect = componentRect;
-			propertyRect.x += componentRect.width;
-			string[] propertyArray = { "Property" };
-
-			if ( component != null )
-			{
-				propertyArray = GetNames( component.GetType().GetProperties() );
-			}
-
-			propertyID = EditorGUI.Popup ( propertyRect, propertyID, propertyArray );
-			if ( component != null )
-			{
-				propertyName = propertyArray[propertyID];
-				EditorUtility.SetDirty ( target );
-			}
-			*/
 			EditorGUI.EndProperty();
 		}
 
 		public override float GetPropertyHeight( SerializedProperty property, GUIContent label )
 		{
-			return (fieldHeight + 5) * 3;
+			return (fieldHeight + 5) * 2;
 		}
 
 		private string[] GetTypeNames<T>( IList<T> list )
