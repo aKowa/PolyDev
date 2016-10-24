@@ -4,13 +4,16 @@ using UnityEngine;
 
 namespace PolyDev.UI
 {
+	/// <summary>
+	/// Draws a Bind class with any serializable Type and offers components and properties as Popups.
+	/// </summary>
 	[CustomPropertyDrawer ( typeof ( BindFloat ) )]
 	[CustomPropertyDrawer ( typeof ( BindColor ) )]
 	[CustomPropertyDrawer ( typeof ( BindInt ) )]
-	public class BinderDrawer : PropertyDrawer
+	public class BindDrawer : PropertyDrawer
 	{
-		private const float fieldHeight = 16;
-
+		private const float FieldHeight = 16;
+		
 		public override void OnGUI ( Rect position, SerializedProperty property, GUIContent label )
 		{
 			EditorGUI.BeginProperty ( position, label, property );
@@ -20,14 +23,14 @@ namespace PolyDev.UI
 			EditorGUI.BeginChangeCheck ();
 
 			// value
-			var valueRect = new Rect ( position.x + 15, position.y + 5, position.width, fieldHeight );
+			var valueRect = new Rect ( position.x + 15, position.y + 5, position.width, FieldHeight );
 			var serializedValue = property.FindPropertyRelative ( "valueUnbound" );
 			EditorGUI.PropertyField( valueRect, serializedValue, new GUIContent( label.text + " (Unbound)") );
 
 			// rect
 			var objectRect = valueRect;
-			objectRect.y += 5 + fieldHeight;
-			objectRect.width = (objectRect.width / 3) - 5;
+			objectRect.y += 5 + FieldHeight;
+			objectRect.width = objectRect.width / 3 - 5;
 
 			var componentRect = objectRect;
 			componentRect.x += objectRect.width;
@@ -91,7 +94,7 @@ namespace PolyDev.UI
 
 		public override float GetPropertyHeight( SerializedProperty property, GUIContent label )
 		{
-			return (fieldHeight + 5) * 2;
+			return (FieldHeight + 5) * 2;
 		}
 
 		private string[] GetTypeNames<T>( IList<T> list )

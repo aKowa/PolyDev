@@ -11,6 +11,7 @@ public class ExampleBindEnum : MonoBehaviour
 	public void Start ()
 	{
 		myStates = new Bind<States, Text> ( this.gameObject, "text" );
+		StartCoroutine( Wait() );
 	}
 
 	private IEnumerator Wait ()
