@@ -55,6 +55,7 @@ namespace PolyDev.UI
 			{
 				componentArray = gameObj.GetComponents<Component> ();
 				componentNames = GetTypeNames( componentArray );
+				componentNames = Utility.ClearString( componentNames, '.', ')' );
 			}
 			serializedComponentID.intValue = EditorGUI.Popup ( componentRect, serializedComponentID.intValue, componentNames );
 			var component = serializedComponent.objectReferenceValue as Component;
@@ -76,6 +77,7 @@ namespace PolyDev.UI
 			if ( component != null )
 			{
 				propertyNames = GetNames( component.GetType().GetProperties() );
+				propertyNames = Utility.ClearString ( propertyNames, '.', ')' );
 			}
 			serializedPropertyID.intValue = EditorGUI.Popup( propertyRect, serializedPropertyID.intValue, propertyNames );
 			

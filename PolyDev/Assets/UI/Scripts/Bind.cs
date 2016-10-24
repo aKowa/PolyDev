@@ -75,7 +75,7 @@ namespace PolyDev.UI
 
 			this.targetGameObject = newTargetComponent.gameObject;
 			this.targetComponent = newTargetComponent;
-			propInfo = this.targetComponent.GetType ().GetProperty ( propertyName );
+			propInfo = this.targetComponent.GetType().GetProperty( propertyName );
 		}
 
 		/// <summary>
