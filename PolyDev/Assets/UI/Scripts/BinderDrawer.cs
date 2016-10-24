@@ -29,12 +29,22 @@ namespace PolyDev.UI
 			EditorGUI.PropertyField( valueRect, serializedValue, new GUIContent("Value") );
 
 			// object
-			var componentRect = new Rect ( position.x + 15, position.y + 10 + fieldHeight * 2, (position.width - 15) / 2, fieldHeight );
+			var objectRect = new Rect ( position.x + 15, position.y + 10 + fieldHeight * 2, (position.width - 15) / 3, fieldHeight );
+
+			var componentRect = objectRect;
+			componentRect.x += objectRect.width;
+
 			var propertyRect = componentRect;
 			propertyRect.x += componentRect.width;
 
+			var serializedGameObject = property.FindPropertyRelative( "targetGameObject" );
 			var serializedComponent = property.FindPropertyRelative( "targetComponent" );
-			EditorGUI.PropertyField( componentRect, serializedComponent, GUIContent.none );
+			var serializedID = property.FindPropertyRelative ( "propertyID" );
+
+			EditorGUI.PropertyField( objectRect, serializedGameObject, GUIContent.none );
+			EditorGUI.PropertyField ( componentRect, serializedComponent, GUIContent.none );
+
+			var gameObj = serializedGameObject.objectReferenceValue as GameObject;
 			var component = serializedComponent.objectReferenceValue as Component;
 
 			string[] propertyNames = { "None" };
@@ -43,9 +53,8 @@ namespace PolyDev.UI
 				propertyNames = GetNames( component.GetType().GetProperties() );
 			}
 
-			var serializedID = property.FindPropertyRelative( "propertyID" );
 			serializedID.intValue = EditorGUI.Popup( propertyRect, serializedID.intValue, propertyNames );
-			Debug.Log( "ID: " + serializedID.intValue );
+			//Debug.Log( "ID: " + serializedID.intValue );
 
 			if ( GUI.changed )
 			{

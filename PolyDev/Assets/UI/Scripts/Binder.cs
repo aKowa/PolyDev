@@ -4,8 +4,9 @@ using UnityEngine;
 
 namespace PolyDev.UI
 {
-	public class Binder<TValue> 
+	public class Binder<TValue>
 	{
+		public GameObject targetGameObject;
 		public Component targetComponent;
 		public string targetPropertyName;
 
